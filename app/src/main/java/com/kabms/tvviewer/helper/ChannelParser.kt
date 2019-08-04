@@ -4,7 +4,7 @@ import com.kabms.tvviewer.domain.Channel
 import java.io.BufferedReader
 import java.io.InputStream
 
-class ChannelParser() {
+class ChannelParser {
 
     companion object {
         private const val FILE_HEADER_EXTM3U = "#EXTM3U"
@@ -18,7 +18,7 @@ class ChannelParser() {
             val content = inputStream.bufferedReader().use(BufferedReader::readText)
             val channelList = mutableListOf<Channel>()
             content.split(EXTM3U_ITEM).forEach {
-                channelList.add( Channel().apply {
+                channelList.add(Channel().apply {
                     link = retrieveLink(it)
                     logo = retrieveLogo(it)
                     groupTitle = retrieveGroupTitle(it)

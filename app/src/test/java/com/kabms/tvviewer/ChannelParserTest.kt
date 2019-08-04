@@ -1,8 +1,7 @@
 package com.kabms.tvviewer
 
 import com.kabms.tvviewer.helper.ChannelParser
-import org.junit.Assert
-import org.junit.Assert.*
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import java.io.InputStream
@@ -18,7 +17,7 @@ class ChannelParserTest {
 
     @Test
     fun test() {
-        val channels =  ChannelParser.parse(inputStream)
+        val channels = ChannelParser.parse(inputStream)
 
         println("channel count ${channels.size}")
 
