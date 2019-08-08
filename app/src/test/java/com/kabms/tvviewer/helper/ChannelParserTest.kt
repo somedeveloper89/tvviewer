@@ -1,6 +1,5 @@
-package com.kabms.tvviewer
+package com.kabms.tvviewer.helper
 
-import com.kabms.tvviewer.helper.ChannelParser
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
