@@ -7,7 +7,7 @@ import com.kabms.tvviewer.repository.ChannelRepository
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.verify
+import java.util.concurrent.CountDownLatch
 
 class ChannelOverviewViewModelTest {
 
@@ -15,18 +15,21 @@ class ChannelOverviewViewModelTest {
     @JvmField
     val rule = InstantTaskExecutorRule()
 
-    val repository = ChannelRepository()
+    val countDownLatch = CountDownLatch(1)
+
+    val repository: ChannelRepository = ChannelRepository()
     val viewModel = ChannelOverviewViewModel(repository)
 
     @Test
     fun `Load list of channels`() {
         val observer: Observer<List<Channel>> = Observer {
             assertEquals(1, 1)
+            println("onChanged")
+            countDownLatch.countDown()
         }
 
         viewModel.getChannelsList().observeForever(observer)
         viewModel.getChannelsList()
-
-        verify(repository).loadChannels()
+        countDownLatch.await()
     }
 }
