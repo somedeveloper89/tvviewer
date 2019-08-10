@@ -7,16 +7,20 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "kotlin-kapt"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
     defaultConfig {
         applicationId "com.kabms.tvviewer"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -28,28 +32,24 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$androidCoroutines"
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.support.core_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+    implementation deps.lifecycle.extensions
+    implementation deps.constraint_layout
+    implementation deps.kotlin.coroutines
+    implementation deps.koin.android_viewmodel
 
-    implementation "androidx.appcompat:appcompat:$suportLib"
-    implementation "androidx.core:core-ktx:$coreKtx"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
-    implementation "androidx.recyclerview:recyclerview:$suportLib"
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
-    implementation "android.arch.lifecycle:extensions:$architectureComp"
-    annotationProcessor "android.arch.lifecycle:compiler:$architectureComp"
+    kapt deps.lifecycle.compiler
 
-    implementation "org.koin:koin-androidx-viewmodel:$koin"
+    testImplementation deps.junit
+    testImplementation deps.koin.test
+    testImplementation deps.mockito.core
+    testImplementation deps.mockito.kotlin
+    testImplementation deps.arch_core.testing
 
-    testImplementation "junit:junit:$jUnit"
-    testImplementation "org.koin:koin-test:$koin"
-    testImplementation "org.mockito:mockito-core:$mockito"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin"
-    testImplementation "android.arch.core:core-testing:$architectureCompTesting"
-
-    androidTestImplementation "androidx.test:runner:$testRunner"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.atsl.runner
 }

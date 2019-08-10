@@ -50,6 +50,6 @@ class ChannelParserTest {
         private const val FILE_NAME = "streams.txt"
 
         private const val TEST_CHANNEL_ITEM_CONTENT =
-            """#EXTINF:-1 tvg-logo="https://i.imgur.com/pMhTxmf.png" group-title="USA",CBS (WPEC) (EST) http://170.250.96.20:8110/cbs.m3u8"""
+            "#EXTINF:-1 tvg-logo=\"https://i.imgur.com/pMhTxmf.png\" group-title=\"USA\",CBS (WPEC) (EST)\nhttp://170.250.96.20:8110/cbs.m3u8"
     }
 }
