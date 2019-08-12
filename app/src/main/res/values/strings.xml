@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Tv viewer</string>
+    <string name="icon_of_channel">Icon of Channel</string>
 </resources>
