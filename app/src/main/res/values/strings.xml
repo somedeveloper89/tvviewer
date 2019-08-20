@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Tv viewer</string>
     <string name="icon_of_channel">Icon of Channel</string>
+
+    <!-- activity_main -->
+    <string name="activity_main_load_btn_text">Select file</string>
+    <string name="activity_main_load_progress_text">Parsing channels</string>
 </resources>

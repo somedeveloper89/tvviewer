@@ -1,12 +1,13 @@
-//package com.kabms.tvviewer.binding
-//
-//import android.widget.ImageView
-//import androidx.databinding.BindingAdapter
-//
-//object BindingAdapters {
-//
-//    @BindingAdapter
-//    fun bindImage(imageView: ImageView, url: String?) {
+package com.kabms.tvviewer.binding
+
+/**
+ * Data Binding adapters specific to the app.
+ */
+object BindingAdapters {
+
+//    @JvmStatic
+//    @BindingAdapter("app:data")
+//    fun bindData(recyclerView: RecyclerView, channels: List<Channel>) {
 //
 //    }
-//}
+}
