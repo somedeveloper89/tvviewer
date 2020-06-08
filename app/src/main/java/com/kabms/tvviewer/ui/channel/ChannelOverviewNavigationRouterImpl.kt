@@ -23,8 +23,7 @@ class ChannelOverviewNavigationRouterImpl(val context: Context) : ChannelOvervie
     }
 
     private fun getFileChooserIntent() = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-        setType("*/*")
-        // todo specify mime type
+        setType("*/*") // todo further specify mime type
     }
 
     private fun getOpenChannelIntent(channel: Channel) = Intent()
