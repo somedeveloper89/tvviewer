@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.kabms.tvviewer">
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.kabms.tvviewer">
+
+    <uses-permission
+            android:name="android.permission.READ_EXTERNAL_STORAGE"
+            android:maxSdkVersion="28" />
 
     <application
             android:allowBackup="true"
@@ -14,11 +18,22 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--        <provider-->
+        <!--                android:authorities="nl.kabms.fileprovider"-->
+        <!--                android:name="androidx.core.content.FileProvider"-->
+        <!--                android:exported="false"-->
+        <!--                android:grantUriPermissions="true">-->
+        <!--            <meta-data-->
+        <!--                    android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--                    android:resource="@xml/file_paths" />-->
+
+        <!--        </provider>-->
     </application>
 
 </manifest>

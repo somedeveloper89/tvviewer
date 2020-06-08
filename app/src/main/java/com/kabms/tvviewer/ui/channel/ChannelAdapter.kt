@@ -30,6 +30,7 @@ class ChannelAdapter(
 
     fun setAdapterData(channels: List<Channel>) {
         this.channelList = channels
+        notifyDataSetChanged()
     }
 
     inner class ChannelViewHolder(private val binding: ViewDataBinding) :
@@ -37,7 +38,7 @@ class ChannelAdapter(
 
         fun bind(channel: Channel) {
             binding.setVariable(BR.channel, channel)
-            binding.root.setOnClickListener { callback.invoke(channel) }
+//            binding.root.setOnClickListener { callback.invoke(channel) }
             binding.executePendingBindings()
         }
     }

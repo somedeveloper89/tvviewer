@@ -15,7 +15,7 @@ class ChannelParser {
         private const val ITEM_GROUP_TITLE_REGEX = "group-title=(.*)"
         private const val ITEM_LINK_END_REGEX = "(.*).m3u8"
 
-        suspend fun parse(inputStream: InputStream): List<Channel> {
+        fun parse(inputStream: InputStream): List<Channel> {
             val content = inputStream.bufferedReader().use(BufferedReader::readText)
             val channelList = mutableListOf<Channel>()
             content.split(EXTM3U_ITEM).forEach {
