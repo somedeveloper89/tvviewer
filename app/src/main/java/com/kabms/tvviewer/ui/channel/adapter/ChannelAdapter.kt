@@ -1,4 +1,4 @@
-package com.kabms.tvviewer.ui.channel
+package com.kabms.tvviewer.ui.channel.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

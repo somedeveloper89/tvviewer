@@ -1,4 +1,4 @@
-package com.kabms.tvviewer.ui.channel
+package com.kabms.tvviewer.ui.channel.router
 
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData

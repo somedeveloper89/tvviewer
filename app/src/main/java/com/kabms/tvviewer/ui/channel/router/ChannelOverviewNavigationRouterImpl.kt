@@ -1,15 +1,16 @@
-package com.kabms.tvviewer.ui.channel
+package com.kabms.tvviewer.ui.channel.router
 
 import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import com.kabms.tvviewer.domain.Channel
-import com.kabms.tvviewer.ui.channel.ChannelOverviewNavigationRouter.Router
-import com.kabms.tvviewer.ui.channel.ChannelOverviewNavigationRouter.Router.OpenChannel
-import com.kabms.tvviewer.ui.channel.ChannelOverviewNavigationRouter.Router.ShowFileChooser
-import com.kabms.tvviewer.ui.channel.ChannelOverviewNavigationRouter.RouterInfo
+import com.kabms.tvviewer.ui.channel.router.ChannelOverviewNavigationRouter.Router
+import com.kabms.tvviewer.ui.channel.router.ChannelOverviewNavigationRouter.Router.OpenChannel
+import com.kabms.tvviewer.ui.channel.router.ChannelOverviewNavigationRouter.Router.ShowFileChooser
+import com.kabms.tvviewer.ui.channel.router.ChannelOverviewNavigationRouter.RouterInfo
 
-class ChannelOverviewNavigationRouterImpl(val context: Context) : ChannelOverviewNavigationRouter {
+class ChannelOverviewNavigationRouterImpl(val context: Context) :
+    ChannelOverviewNavigationRouter {
 
     private val navigationObservable = MutableLiveData<RouterInfo>()
 

@@ -26,8 +26,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -42,6 +45,7 @@ dependencies {
     implementation deps.kotlin.coroutines
     implementation deps.koin.android_viewmodel
     implementation deps.glide.glide
+    implementation deps.exoplayer.exoplayer_full
 
     kapt deps.lifecycle.compiler
     kapt deps.glide.glide_compiler

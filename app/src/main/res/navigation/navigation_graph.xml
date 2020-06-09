@@ -6,6 +6,6 @@
 
     <fragment
             android:id="@+id/channelOverviewFragment"
-            android:name="com.kabms.tvviewer.ui.channel.ChannelOverviewFragment"
+            android:name="com.kabms.tvviewer.ui.channel.fragment.ChannelOverviewFragment"
             android:label="ChannelOverviewFragment" />
 </navigation>

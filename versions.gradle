@@ -20,6 +20,7 @@ versions.coroutines = "1.3.0-RC"
 versions.koin = "2.0.1"
 versions.atsl_runner = "1.1.1"
 versions.glide = "4.9.0"
+versions.exoplayer = "2.11.5"
 
 ext.versions = versions
 
@@ -82,7 +83,7 @@ deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_g
 def build_versions = [:]
 build_versions.min_sdk = 21
 build_versions.target_sdk = 28
-build_versions.build_tools = "28.0.3"
+build_versions.build_tools = "29.0.2"
 ext.build_versions = build_versions
 
 def navigation = [:]
@@ -95,6 +96,10 @@ def glide = [:]
 glide.glide = "com.github.bumptech.glide:glide:$versions.glide"
 glide.glide_compiler = "com.github.bumptech.glide:compiler:$versions.glide"
 deps.glide = glide
+
+def exoplayer = [:]
+exoplayer.exoplayer_full = "com.google.android.exoplayer:exoplayer:$versions.exoplayer"
+deps.exoplayer = exoplayer
 
 ext.deps = deps
 

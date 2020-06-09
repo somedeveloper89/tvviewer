@@ -5,12 +5,12 @@ import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kabms.tvviewer.domain.Channel
-import com.kabms.tvviewer.domain.ChannelOverviewEvent
-import com.kabms.tvviewer.domain.ChannelOverviewEvent.Action
-import com.kabms.tvviewer.domain.ChannelOverviewNavigationState
-import com.kabms.tvviewer.domain.ChannelOverviewUiState
 import com.kabms.tvviewer.helper.ChannelParser
 import com.kabms.tvviewer.repository.ChannelRepository
+import com.kabms.tvviewer.ui.channel.binding.ChannelOverviewNavigationState
+import com.kabms.tvviewer.ui.channel.binding.ChannelOverviewUiEvent
+import com.kabms.tvviewer.ui.channel.binding.ChannelOverviewUiEvent.Action
+import com.kabms.tvviewer.ui.channel.binding.ChannelOverviewUiState
 
 class ChannelOverviewViewModel(
     private val context: Context,
@@ -27,7 +27,7 @@ class ChannelOverviewViewModel(
 
     fun getNavigationObservable() = navigationObservable
 
-    fun onDispatch(event: ChannelOverviewEvent) {
+    fun onDispatch(event: ChannelOverviewUiEvent) {
         when (event) {
             is Action.OnSelectFileClick -> navigationObservable.value =
                 ChannelOverviewNavigationState.ShowFileChooser

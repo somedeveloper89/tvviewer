@@ -1,4 +1,4 @@
-package com.kabms.tvviewer.ui.channel
+package com.kabms.tvviewer.ui.channel.fragment
 
 import android.app.Activity
 import android.content.Intent
@@ -14,13 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kabms.tvviewer.R
 import com.kabms.tvviewer.databinding.FragmentChannelOverviewBinding
 import com.kabms.tvviewer.domain.Channel
-import com.kabms.tvviewer.domain.ChannelOverviewEvent.Action
-import com.kabms.tvviewer.domain.ChannelOverviewNavigationState
-import com.kabms.tvviewer.domain.ChannelOverviewUiState
 import com.kabms.tvviewer.feature.ui.ChannelOverviewViewModel
 import com.kabms.tvviewer.helper.setGone
 import com.kabms.tvviewer.helper.setVisible
-import com.kabms.tvviewer.ui.channel.ChannelOverviewNavigationRouter.Router
+import com.kabms.tvviewer.ui.channel.adapter.ChannelAdapter
+import com.kabms.tvviewer.ui.channel.binding.ChannelOverviewNavigationState
+import com.kabms.tvviewer.ui.channel.binding.ChannelOverviewUiEvent.Action
+import com.kabms.tvviewer.ui.channel.binding.ChannelOverviewUiState
+import com.kabms.tvviewer.ui.channel.router.ChannelOverviewNavigationRouter
+import com.kabms.tvviewer.ui.channel.router.ChannelOverviewNavigationRouter.Router
 import kotlinx.android.synthetic.main.fragment_channel_overview.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel

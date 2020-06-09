@@ -1,14 +1,15 @@
-package com.kabms.tvviewer.domain
+package com.kabms.tvviewer.ui.channel.binding
 
 import android.net.Uri
+import com.kabms.tvviewer.domain.Channel
 
-sealed class ChannelOverviewEvent {
+sealed class ChannelOverviewUiEvent {
 
-    sealed class Phase : ChannelOverviewEvent() {
+    sealed class Phase : ChannelOverviewUiEvent() {
         object Load : Phase()
     }
 
-    sealed class Action : ChannelOverviewEvent() {
+    sealed class Action : ChannelOverviewUiEvent() {
         data class OnChannelClick(val channel: Channel) : Action()
         object OnSelectFileClick : Action()
         data class OnFileUriChosen(val uri: Uri) : Action()
