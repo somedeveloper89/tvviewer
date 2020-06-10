@@ -2,10 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/navigation_graph"
-        app:startDestination="@id/channelOverviewFragment">
+        app:startDestination="@id/watchChannelFragment">
 
     <fragment
             android:id="@+id/channelOverviewFragment"
             android:name="com.kabms.tvviewer.ui.channel.fragment.ChannelOverviewFragment"
             android:label="ChannelOverviewFragment" />
+    <fragment
+            android:id="@+id/watchChannelFragment"
+            android:name="com.kabms.tvviewer.ui.channel.fragment.WatchChannelFragment"
+            android:label="WatchChannelFragment" />
+
+
 </navigation>

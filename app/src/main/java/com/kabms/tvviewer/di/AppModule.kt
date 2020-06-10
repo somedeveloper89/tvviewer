@@ -1,7 +1,6 @@
 package com.kabms.tvviewer.di
 
 import android.content.Context
-import com.kabms.tvviewer.domain.Channel
 import com.kabms.tvviewer.feature.ui.ChannelOverviewViewModel
 import com.kabms.tvviewer.repository.ChannelRepository
 import com.kabms.tvviewer.ui.channel.router.ChannelOverviewNavigationRouter
@@ -30,7 +29,11 @@ object AppModule {
 
         // WatchChannelFragment
 
-        viewModel { (channel: Channel) -> WatchChannelViewModel(channel) }
+        viewModel { (context: Context) ->
+            WatchChannelViewModel(
+                context
+            )
+        }
 
         factory<WatchChannelNavigationRouter> {
             WatchChannelNavigationRouterImpl()
