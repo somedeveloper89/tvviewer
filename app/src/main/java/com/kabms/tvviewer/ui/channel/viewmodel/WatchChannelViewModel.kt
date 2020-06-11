@@ -2,6 +2,7 @@ package com.kabms.tvviewer.ui.channel.viewmodel
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -16,6 +17,10 @@ import com.kabms.tvviewer.ui.channel.binding.WatchChannelUiState
 class WatchChannelViewModel(
     private val context: Context
 ) : ViewModel() {
+
+    companion object {
+        private const val TAG = "WatchChannelViewModel"
+    }
 
     private val viewObservable = MutableLiveData<WatchChannelUiState>()
 
@@ -35,12 +40,14 @@ class WatchChannelViewModel(
     }
 
     fun onDispatch(event: WatchChannelUiEvent) {
+        Log.d(TAG, "onDispatch: $event")
         when (event) {
             is Phase.OnInitialize -> createPlayer()
+            is Phase.OnPlayerAttachedToView -> viewObservable.value =
+                WatchChannelUiState.HideSystemUi
             is LifeCycleEvent.OnStart -> initializePlayer()
             is LifeCycleEvent.OnResume -> {
                 initializePlayer()
-                viewObservable.value = WatchChannelUiState.HideSystemUi
             }
             is LifeCycleEvent.OnPause,
             LifeCycleEvent.OnStop -> releasePlayer()
@@ -48,12 +55,17 @@ class WatchChannelViewModel(
     }
 
     private fun createPlayer() {
-        player = SimpleExoPlayer.Builder(context).build()
-        player?.let { viewObservable.value = WatchChannelUiState.InitPlayer(it) }
+        Log.d(TAG, "createPlayer")
+        if (player == null) {
+            player = SimpleExoPlayer.Builder(context).build()
+        }
     }
 
     private fun initializePlayer() {
+        Log.d(TAG, "initializePlayer")
+        createPlayer()
         player?.let {
+            viewObservable.value = WatchChannelUiState.InitPlayer(it)
             it.playWhenReady = playWhenReady
             it.seekTo(currentWindow, playbackPosition)
             it.prepare(createMediaSource(), false, false)
@@ -61,6 +73,7 @@ class WatchChannelViewModel(
     }
 
     private fun createMediaSource(): HlsMediaSource {
+        Log.d(TAG, "createMediaSource")
         val uri =
             Uri.parse("http://a.jsrdn.com/broadcast/256ad9e679/+0000/high/c.m3u8")
         val dataSourceFactory = DefaultDataSourceFactory(context, "exoplayer-codelab")
@@ -68,6 +81,7 @@ class WatchChannelViewModel(
     }
 
     private fun releasePlayer() {
+        Log.d(TAG, "releasePlayer")
         player?.let {
             playWhenReady = it.playWhenReady
             playbackPosition = it.currentPosition

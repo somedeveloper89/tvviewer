@@ -4,6 +4,7 @@ sealed class WatchChannelUiEvent {
 
     sealed class Phase {
         object OnInitialize : WatchChannelUiEvent()
+        object OnPlayerAttachedToView : WatchChannelUiEvent()
     }
 
     sealed class LifeCycleEvent {

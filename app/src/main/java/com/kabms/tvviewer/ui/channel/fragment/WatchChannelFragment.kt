@@ -1,6 +1,7 @@
 package com.kabms.tvviewer.ui.channel.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class WatchChannelFragment : Fragment() {
+
+    companion object {
+        private const val TAG = "WatchChannelFragment"
+    }
 
     private val viewModel: WatchChannelViewModel by viewModel {
         parametersOf(requireContext())
@@ -53,10 +58,12 @@ class WatchChannelFragment : Fragment() {
     }
 
     private fun initView() {
+        Log.d(TAG, "initView")
         playerView = video_view
     }
 
     private fun initObservables() {
+        Log.d(TAG, "initObservables")
         viewModel.getViewObservable().observe(viewLifecycleOwner, Observer {
             when (it) {
                 is WatchChannelUiState.Loading -> showLoading()
@@ -81,7 +88,9 @@ class WatchChannelFragment : Fragment() {
     }
 
     private fun initPlayerToView(player: SimpleExoPlayer) {
+        Log.d(TAG, "initPlayerToView: $player")
         playerView.player = player
+//        viewModel.onDispatch(WatchChannelUiEvent.Phase.OnPlayerAttachedToView)
     }
 
     override fun onStart() {
@@ -113,11 +122,13 @@ class WatchChannelFragment : Fragment() {
     }
 
     private fun showLoading() {
+        Log.d(TAG, "showLoading")
         // TODO: 10/06/2020
     }
 
     private fun hideSystemUi() {
-        video_view.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE
+        Log.d(TAG, "hideSystemUi")
+        playerView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE
                 or View.SYSTEM_UI_FLAG_FULLSCREEN
                 or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
